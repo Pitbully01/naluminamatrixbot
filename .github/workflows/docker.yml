@@ -28,6 +28,7 @@ jobs:
         env:
           MATRIX_HOMESERVER: ${{ secrets.MATRIX_HOMESERVER }}
           MATRIX_ACCESS_TOKEN: ${{ secrets.MATRIX_ACCESS_TOKEN }}
+          MATRIX_ROOM_ID: ${{ secrets.MATRIX_ROOM_ID }}
 
       - name: Login to GHCR
         uses: docker/login-action@v3
