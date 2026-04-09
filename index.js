@@ -39,5 +39,8 @@ export async function sendMessage(title, message) {
     console.log("=== SEND MESSAGE ===");
     console.log("Title:", title || "no title provided");
     console.log("Message:", message);
-    await client.sendMessage(roomId, message);
+    await client.sendMessage(roomId, {
+        msgtype: "m.text",
+        body: message
+    });
 }
