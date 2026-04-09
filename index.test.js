@@ -11,6 +11,14 @@ afterEach(() => {
     logSpy.mockRestore();
 });
 
+jest.mock("matrix-bot-sdk", () => {
+    return {
+        MatrixClient: jest.fn().mockImplementation(() => ({
+            sendMessage: jest.fn()
+        }))
+    };
+});
+
 test("sendMessage läuft ohne Fehler", async () => {
     await sendMessage("Test", "Hallo");
 });
