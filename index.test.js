@@ -1,8 +1,14 @@
+import { jest, test } from "@jest/globals";
+
+const exitSpy = jest.spyOn(process, "exit").mockImplementation(() => {
+  throw new Error("process.exit called");
+});
+
 process.env.MATRIX_HOMESERVER = "http://localhost";
 process.env.MATRIX_ACCESS_TOKEN = "test";
 process.env.MATRIX_ROOM_ID = "!test:localhost";
+
 import { sendMessage } from "./index.js";
-import { jest, test } from "@jest/globals";
 
 let logSpy;
 
@@ -13,7 +19,7 @@ beforeEach(() => {
 afterEach(() => {
     logSpy.mockRestore();
 });
-
+/*
 jest.mock("matrix-bot-sdk", () => {
     return {
         MatrixClient: jest.fn().mockImplementation(() => ({
@@ -21,7 +27,7 @@ jest.mock("matrix-bot-sdk", () => {
         }))
     };
 });
-
+*/
 test("sendMessage läuft ohne Fehler", async () => {
     await sendMessage("Test", "Hallo");
 });
