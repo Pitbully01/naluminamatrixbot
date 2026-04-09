@@ -1,3 +1,6 @@
+process.env.MATRIX_HOMESERVER = "http://localhost";
+process.env.MATRIX_ACCESS_TOKEN = "test";
+process.env.MATRIX_ROOM_ID = "!test:localhost";
 import { sendMessage } from "./index.js";
 import { jest, test } from "@jest/globals";
 
