@@ -1,8 +1,9 @@
+import "dotenv/config";
 import express from 'express';
 import { MatrixClient } from 'matrix-bot-sdk';
+import { loadEnv } from './env.js';
 
-const homeserver = process.env.MATRIX_HOMESERVER || "https://matrix.org";
-const accessToken = process.env.MATRIX_ACCESS_TOKEN || "DUMMY_TOKEN";
+const { homeserver, accessToken } = loadEnv();
 
 const client = new MatrixClient(
     homeserver,
