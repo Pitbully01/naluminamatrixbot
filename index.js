@@ -1,8 +1,8 @@
 import express from 'express';
 import { MatrixClient } from 'matrix-bot-sdk';
 
-const homeserver = process.env.MATRIX_HOMESERVER;
-const accessToken = process.env.MATRIX_ACCESS_TOKEN;
+const homeserver = process.env.MATRIX_HOMESERVER || "https://matrix.org";
+const accessToken = process.env.MATRIX_ACCESS_TOKEN || "DUMMY_TOKEN";
 
 const client = new MatrixClient(
     homeserver,
