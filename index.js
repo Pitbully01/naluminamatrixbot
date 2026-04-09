@@ -6,6 +6,8 @@ const client = new MatrixClient(
     "DUMMY_TOKEN"
 );
 
+console.log("Client erstellt:", typeof client);
+
 const app = express();
 app.use(express.json());
 app.get('/', (req, res) => {
