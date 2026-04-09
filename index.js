@@ -1,4 +1,10 @@
 import express from 'express';
+import { MatrixClient } from 'matrix-bot-sdk';
+
+const client = new MatrixClient(
+    "https://matrix.org",
+    "DUMMY_TOKEN"
+);
 
 const app = express();
 app.use(express.json());
