@@ -3,7 +3,7 @@ import express from 'express';
 import { MatrixClient } from 'matrix-bot-sdk';
 import { loadEnv } from './env.js';
 
-const { homeserver, accessToken } = loadEnv();
+const { homeserver, accessToken, roomId } = loadEnv();
 
 const client = new MatrixClient(
     homeserver,
@@ -11,6 +11,8 @@ const client = new MatrixClient(
 );
 
 console.log("Client erstellt:", typeof client);
+console.log("Homeserver:", homeserver);
+console.log("Room ID:", roomId);
 
 const app = express();
 app.use(express.json());
@@ -37,4 +39,5 @@ export async function sendMessage(title, message) {
     console.log("=== SEND MESSAGE ===");
     console.log("Title:", title || "no title provided");
     console.log("Message:", message);
+    await client.sendMessage(roomId, message);
 }

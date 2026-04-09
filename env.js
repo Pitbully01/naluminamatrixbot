@@ -1,5 +1,5 @@
 export function loadEnv() {
-    const requiredEnvVars = ['MATRIX_HOMESERVER', 'MATRIX_ACCESS_TOKEN'];
+    const requiredEnvVars = ['MATRIX_HOMESERVER', 'MATRIX_ACCESS_TOKEN', 'MATRIX_ROOM_ID'];
     const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
 
     if (missingEnvVars.length > 0) {
@@ -9,6 +9,7 @@ export function loadEnv() {
 
     return{
         homeserver: process.env.MATRIX_HOMESERVER,
-        accessToken: process.env.MATRIX_ACCESS_TOKEN
+        accessToken: process.env.MATRIX_ACCESS_TOKEN,
+        roomId: process.env.MATRIX_ROOM_ID
     }
 }
